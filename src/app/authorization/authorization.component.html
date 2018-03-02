@@ -1,0 +1,43 @@
+<div class="popup">
+    <div class="title mat-background-primary">
+        <span class="mat-title">Authorization</span>
+    </div>
+    <div class="content">
+        <form class="form" [formGroup]="registrationForm" (ngSubmit)="registration()">
+            <mat-form-field hintLabel="Minimal 5 characters">
+                <input matInput formControlName="username" placeholder="Username" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="email" placeholder="Email">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="birthday" [matDatepicker]="picker" placeholder="Input your birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field hintLabel="Minimal 8 characters">
+                <input matInput formControlName="password" placeholder="Password" type="password">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       formControlName="confirm"
+                       placeholder="Confirm password"
+                       type="password"
+                >
+            </mat-form-field>
+            <div class="float-block">
+                <a class="left" routerLink="/login" mat-button color="primary">
+                    I'm have account
+                </a>
+                <button class="right"
+                        type="submit"
+                        mat-raised-button color="primary"
+                        [disabled]="registrationForm.invalid">
+                    Authorization
+                </button>
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+</div>

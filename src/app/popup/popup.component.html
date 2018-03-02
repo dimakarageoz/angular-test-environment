@@ -1,0 +1,22 @@
+<div *ngIf="isPopupOpen" class="layout" (click)="!popup.unclosable && !isLoading && hidePopup()"></div>
+<div class="popup" [hidden]="!isPopupOpen">
+    <div class="wrapper">
+        <div class="popup-title">
+            <span class="mat-title text bold">{{popup?.title}}</span>
+        </div>
+        <div class="br"></div>
+        <div class="popup-content">
+            <span class="mat-body-2">{{popup?.message}}</span>
+            <template #content></template>
+        </div>
+        <div class="br"></div>
+        <div class="popup-footer">
+            <button *ngFor="let item of popup?.buttons" (click)="item.callback()">
+                {{item.label}}
+            </button>
+            <div class="float-block clear"></div>
+        </div>
+    </div>
+    <div *ngIf="isLoading" class="layout"></div>
+    <mat-spinner *ngIf="isLoading" class="popup-loader" [strokeWidth]="2" color="primary"></mat-spinner>
+</div>

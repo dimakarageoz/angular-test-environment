@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "clear-style.css";
+@import "style.clear.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/_theming.scss';
+//@include mat-core();
+
+$primary: mat-palette($mat-indigo,500);
+//$accent: map-get($theme, accent);
+
+body {
+    color: #4e4e4e;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%) !important;
+    box-shadow: 0 0 2px grey;
+}
+.popup .title {
+    padding: 10px 20px;
+    color: #fff;
+    background: mat-color($primary, default);
+}
+.popup .content {
+    padding: 20px 10px 10px 10px;
+}
+
+.form > * {
+    display: block !important;
+}
+
+
+.float-block.left {
+    float: left;
+}
+
+.float-block.right {
+    float: right;
+}
+.float-block.clear {
+    clear: both;
+}
+
+.bold {
+    font-weight: bold;
+}

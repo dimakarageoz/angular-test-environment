@@ -1,0 +1,24 @@
+<div class="popup">
+    <div class="title mat-background-primary">
+        <span class="mat-title">Login</span>
+    </div>
+    <div class="content">
+        <form class="form" [formGroup]="loginForm" (submit)="login()">
+            <mat-form-field>
+                <input matInput formControlName="username" placeholder="Username" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="password" placeholder="Password" type="password">
+            </mat-form-field>
+            <div class="float-block">
+                <a class="left" routerLink="/registration" mat-button color="primary">
+                    I'm not registered
+                </a>
+                <button class="right" type="submit" mat-raised-button color="primary">
+                    Login
+                </button>
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+</div>
