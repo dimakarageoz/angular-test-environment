@@ -11,13 +11,15 @@ export interface IStepComponent {
 
     label: string;
 
-    component: object;
+    component: any;
 
     bindings?: object;
 
     cbToPrevStep?: any;
 
     cbToNextStep?: any;
+
+    actionToAccess?: any;
 }
 
 export interface StepInstruction {
@@ -26,8 +28,6 @@ export interface StepInstruction {
     label: string;
 
     animation?: IAnimationStep;
-
-    actionToAccess: string;
 
     cbForAllNextStep?: any;
 

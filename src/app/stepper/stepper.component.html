@@ -1,3 +1,21 @@
-<p>
-  stepper works!
-</p>
+<!--<app-dynamic-component *ngFor="let stepComp of steps;"-->
+                       <!--[component]="stepComp.component"-->
+                       <!--[bindings]="stepComp.bindings"-->
+<!--&gt;</app-dynamic-component>-->
+<app-dynamic-component
+    [component]="steps[step]?.component"
+    [bindings]="steps[step]?.bindings"
+    [actionToAccess]="steps[step]?.actionToAccess"
+></app-dynamic-component>
+<button
+    [disabled]="step === 0"
+    (click)="goToPrev()"
+>
+    Prev
+</button>
+<button
+    [disabled]="step === steps.length - 1"
+    (click)="goToNext()"
+>
+    Next
+</button>

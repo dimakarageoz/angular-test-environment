@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {CounterService} from './counter.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {TimerModule} from './timer/timer.module';
 import {PopupModule} from './popup/popup.module';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { LoginComponent } from './authorization/login/login.component';
@@ -22,7 +21,8 @@ import {CommonModule} from '@angular/common';
 import {HomeService} from './home/home.service';
 import { PositionEditorComponent } from './position-editor/position-editor.component';
 import {StepperModule} from './stepper/stepper.module';
-import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
+import {RemoteTestModule} from './remote-test/remote-test.module';
+import {DropdownModule} from './dropdown/dropdown.module';
 
 
 const routerConfig: Routes = [
@@ -37,13 +37,17 @@ const routerConfig: Routes = [
                 pathMatch: 'full'
             },
             {
-                path: 'google_map',
+                path: 'popup',
                 component: GoogleMapComponent
             },
             {
                 path: 'wall',
                 component: WallComponent
-            }
+            },
+            // {
+            //     path: 'remote',
+            //     loadChildren: 'app/remote-test/remote-test.module#RemoteTestModule'
+            // }
         ]
     },
     {
@@ -56,16 +60,20 @@ const routerConfig: Routes = [
     },
     {
         path: '',
-        redirectTo: '/app',
+        redirectTo: '/app/wall',
         pathMatch: 'full'
     }
 ];
 
+const entComps = [
+    PositionEditorComponent
+];
+
 @NgModule({
-    entryComponents: [
-        PositionEditorComponent
-    ],
+    entryComponents: entComps,
     declarations: [
+        ...entComps,
+
         AppComponent,
         AuthorizationComponent,
         LoginComponent,
@@ -73,9 +81,6 @@ const routerConfig: Routes = [
         GoogleMapComponent,
         WallComponent,
 
-        PositionEditorComponent,
-
-        DynamicComponentComponent,
     ],
     imports: [
         FormsModule,
@@ -87,10 +92,11 @@ const routerConfig: Routes = [
         ReactiveFormsModule,
 
         RouterModule.forRoot(routerConfig),
+        RemoteTestModule,
 
-        TimerModule,
         PopupModule,
-        StepperModule
+        StepperModule,
+        DropdownModule
     ],
     providers: [
         CounterService,

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IAnimationStep, IStepComponent} from './stepper.service';
 
 @Component({
@@ -6,22 +6,33 @@ import {IAnimationStep, IStepComponent} from './stepper.service';
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent {
 
-    @Input steps: Array<IStepComponent>;
+    @Input() steps: Array<IStepComponent>;
 
-    @Input label: string;
+    @Input() label: string;
 
-    @Input animation: IAnimationStep;
+    @Input() animation: IAnimationStep;
 
-    @Output cbForAllNextStep = new EventEmitter();
+    @Output() cbForAllNextStep = new EventEmitter();
 
-    @Output cbForAllPrevStep = new EventEmitter();
+    @Output() cbForAllPrevStep = new EventEmitter();
 
-    @Output finallyCb = new EventEmitter();
+    @Output() finallyCb = new EventEmitter();
+
+    public step: number = 0;
 
     constructor() { }
 
-    ngOnInit() {
+    goToNext(): void {
+        if (this.steps[this.step].cbToNextStep) this.steps[this.step].cbToNextStep();
+
+        this.step++;
+    }
+
+    goToPrev(): void {
+        if (this.steps[this.step].cbToPrevStep) this.steps[this.step].cbToPrevStep();
+
+        this.step--;
     }
 }

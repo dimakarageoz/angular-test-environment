@@ -1,5 +1,12 @@
 <div>
     <input #label>
     <button (click)="saveLabel(label.value)">Save</button>
-    <app-stepper components="" label="" ></app-stepper>
+    <br>
+    <app-dropdown [list]="list"
+                  [selected]="selected"
+                  (itemClickCallback)="selectItem($event)">
+        <div class="dropclick mat-body-2 bold">
+            {{selected}}
+        </div>
+    </app-dropdown>
 </div>

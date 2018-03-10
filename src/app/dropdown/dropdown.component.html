@@ -1,0 +1,15 @@
+<div [hidden]="!isOpen" class="layout" (click)="skipDropdown()"></div>
+<div class="dropdown-container">
+    <div (click)="showList()">
+        <ng-content></ng-content>
+    </div>
+    <ul [hidden]="!isOpen" class="dropdown-list">
+        <li *ngFor="let item of list"
+            class="mat-body-2 bold"
+            (click)="itemClick(item)"
+            [class.selected]="selection(item)">
+            {{item}}
+        </li>
+    </ul>
+</div>
+

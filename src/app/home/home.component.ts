@@ -16,12 +16,10 @@ export class HomeComponent implements AfterViewInit {
         private homeService: HomeService
     ) {
         this.label = this.homeService.getLabel().value;
-        this.homeService.getLabel().subscribe(
-            next => this.label = next
-        );
+        this.homeService.getLabel().subscribe(next => this.label = next);
     }
 
     ngAfterViewInit(): void {
-        console.log(this.toolbarElement);
+        // console.log(this.toolbarElement);
     }
 }
